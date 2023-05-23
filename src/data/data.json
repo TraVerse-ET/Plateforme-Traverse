@@ -1,0 +1,127 @@
+{
+  "Header": {
+    "title": "Traverse",
+    "paragraph": "Une plateforme de tourisme virtuelle est une plateforme en ligne qui permet aux utilisateurs d'explorer virtuellement des destinations touristiques de la ville de MARRAKECH."
+  },
+  "About": {
+    "paragraph": "Nous sommes une équipe de quatres personnes et aussi des étudiants de la filière d' Ingénierie en Réseaux et Systèmes d'Information à la faculté des sciences et techniques de Marrakech. Dans le cadre d'un module, intitulé` Conduite de projet ` de la formation IRISI, on a créé une entreprise de similation ExploTech afin de réaliser un projet TraVerse, sur ceux, nous avons opté d'y inclure le jardin dans ce projet.."
+  },
+  "Gallery": [
+    {
+      "title": "Musée DAR SI SAID",
+      "largeImage": "img/portfolio/11_large.jpeg",
+      "smallImage": "img/portfolio/11_small.jpeg"
+    },
+    {
+      "title": "Musée DAR SI SAID",
+      "largeImage": "img/portfolio/02-large.jpg",
+      "smallImage": "img/portfolio/02-small.jpg"
+    },
+    {
+      "title": "Musée DAR SI SAID",
+      "largeImage": "img/portfolio/03-large.jpg",
+      "smallImage": "img/portfolio/03-small.jpg"
+    }
+  ],
+  "Services": [
+    {
+      "icon": "fa fa-laptop",
+      "name": "Réalité virtuelle",
+      "text": "Notre plateforme propose une visualisation à 360 degrés et une navigation virtuelle, offrant ainsi une expérience immersive et réaliste.."
+    },
+    {
+      "icon": "fa fa-cubes",
+      "name": "Des objets 3D",
+      "text": "Notre projet offre une expérience interactive et pertinente en permettant la visualisation d'objets en 3D accompagnés d'informations écrites et audio.."
+    },
+    {
+      "icon": "fa fa-bank",
+      "name": "Autres fonctionnalités",
+      "text": "Mettre en place un quiz culturel pour acquérir des connaissances.Mettre en place un musee virtuel pour visualiser les objets 3D.."
+    }
+  ],
+  "Testimonials": [
+    {
+      "img": "img/testimonials/01.jpg",
+      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+      "name": "John Doe"
+    },
+    {
+      "img": "img/testimonials/02.jpg",
+      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+      "name": "Johnathan Doe"
+    },
+    {
+      "img": "img/testimonials/03.jpg",
+      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+      "name": "John Doe"
+    },
+    {
+      "img": "img/testimonials/04.jpg",
+      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+      "name": "Johnathan Doe"
+    },
+    {
+      "img": "img/testimonials/05.jpg",
+      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+      "name": "John Doe"
+    },
+    {
+      "img": "img/testimonials/06.jpg",
+      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+      "name": "Johnathan Doe"
+    }
+  ],
+  "Team": [
+    {
+      "img": "img/team/0S.jpg",
+      "name": "OUAFI Soumia",
+      "job": "Chef de qualite de code"
+    },
+    {
+      "img": "img/team/0B.jpeg",
+      "name": "BARRY Boubacar",
+      "job": "Chef livrable"
+    },
+    {
+      "img": "img/team/0A.jpeg",
+      "name": "CHIHAB Amal",
+      "job": "Chef de projet"
+    },
+    {
+      "img": "img/team/0N.jpg",
+      "name": "LEGHRIS Najwa",
+      "job": "Chef de communication"
+    }
+  ],
+  "Contact": {
+    "address": "FSTG MARRAKECH",
+    "phone": "+212 690846902",
+    "email": "explotech23@gmail.com",
+    "LinkedIn": "ExploTech",
+    "Github": "ExploTech",
+    "Instagram": "ExploTech"
+  },
+  "Features": [
+    {
+      "icon": "fa fa-comments-o",
+      "title": "Intérêt touristique et culturel",
+      "text": "Préservation du patrimoine.Promotion du tourisme .Préparer un voyage.Comprendre le contexte historique culturel des lieux"
+    },
+    {
+      "icon": "fa fa-bullhorn",
+      "title": "Intérêt pour les architectes",
+      "text": "Les architectes peuvent d'étudier en détail les lieux sous tous leurs angles."
+    },
+    {
+      "icon": "fa fa-code",
+      "title": "Intérêt technologique",
+      "text": "Tirer parti des nouvelles technologies , telles que la réalité virtuelle et augmentéepour créer une expérience de visite encore plus immersive et interactive.."
+    },
+    {
+      "icon": "fa fa-group",
+      "title": "Apprentissage interactif",
+      "text": "Notre plateforme offre une expérience interactive qui permett aux utilisateurs d'apprendre tout en s'amusant avec un quiz virtuel ."
+    }
+  ]
+}
