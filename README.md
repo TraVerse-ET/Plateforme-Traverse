@@ -14,7 +14,11 @@ Notre plateforme contient les sections suivants :
 Comment lancer notre plateforme ?
 
 Etape 1 : Cloner le projet .
+
 Etape 2 : Se positionner dans le projet .
+
 Etape 3 : Executer la commande "npm install" .
+
 Etape 4 : Executer la commande "npm start" pour lancer le projet .
+
 Etape 5 : Rentrer dans votre browser et coller le lien donner dans l'execution .
