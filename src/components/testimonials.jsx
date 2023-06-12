@@ -4,17 +4,17 @@ import { Unity, useUnityContext } from "react-unity-webgl";
 
 export const Testimonials = (props) => {
   const { unityProvider } = useUnityContext({
-    loaderUrl: "./koutoubia/Build/WebGL Builds.loader.js",
-    dataUrl: "./koutoubia/build/webgl.data",
-    frameworkUrl: "./koutoubia/build/build.framework.js",
-    codeUrl: "./koutoubia/build/build.wasm",
+    loaderUrl: "./traverse_koutoubia/Build/WebGL.loader.js",
+    dataUrl: "./traverse_koutoubia/Build/webgl.data",
+    frameworkUrl: "./traverse_koutoubia/Build/build.framework.js",
+    codeUrl: "./traverse_koutoubia/Build/build.wasm",
   });
 
   return (
     <div id="testimonials">
       <div className="container">
         <div className="section-title text-center">
-          <h2>Demo de notre visite DAR SI SAID</h2>
+          <h2>Demo de notre visite KOUTOUBIA</h2>
         </div>
         {/* <div className="row">
           {props.data

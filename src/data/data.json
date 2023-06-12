@@ -74,22 +74,22 @@
   ],
   "Team": [
     {
-      "img": "img/team/0S.jpg",
+      "img": "img/team/SOUMIA.jpg",
       "name": "OUAFI Soumia",
       "job": "Chef de qualite de code"
     },
     {
-      "img": "img/team/0B.jpeg",
+      "img": "img/team/BARRY.jpeg",
       "name": "BARRY Boubacar",
       "job": "Chef livrable"
     },
     {
-      "img": "img/team/0A.jpeg",
+      "img": "img/team/AMAL.jpeg",
       "name": "CHIHAB Amal",
       "job": "Chef de projet"
     },
     {
-      "img": "img/team/0N.jpg",
+      "img": "img/team/NAJWA.jpeg",
       "name": "LEGHRIS Najwa",
       "job": "Chef de communication"
     }
