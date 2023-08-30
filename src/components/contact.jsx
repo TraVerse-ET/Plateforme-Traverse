@@ -1,35 +1,49 @@
-import { useState } from "react";
-import emailjs from "emailjs-com";
-import React from "react";
+import React, { useState } from 'react';
+import axios from 'axios'; // Import Axios for making HTTP requests
+// ... Rest of the code remains the same
 
 const initialState = {
-  name: "",
-  email: "",
-  message: "",
+  name: '',
+  appreciation: 0,
+  commentaire: ''
 };
+
 export const Contact = (props) => {
-  const [{ name, email, message }, setState] = useState(initialState);
+  const [formData, setFormData] = useState(initialState);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setState((prevState) => ({ ...prevState, [name]: value }));
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value
+    }));
   };
-  const clearState = () => setState({ ...initialState });
+  
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(name, email, message);
-    emailjs
-      .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", e.target, "YOUR_USER_ID")
-      .then(
-        (result) => {
-          console.log(result.text);
-          clearState();
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+  const handleSubmit = (event) => {
+    event.preventDefault();
+   // const jsonData = JSON.stringify(formData);
+
+    // Make a POST request to your Express server
+    axios.post('http://localhost:3000/api/feedback', formData)
+      .then((response) => {
+        console.log("la reponse est : ",response.data); // Response from the server (optional)
+        // Optional: Show a success message to the user
+        alert('Form data submitted successfully!');
+      })
+      .catch((error) => {
+        console.error(error); // Handle any error that occurred during the request
+        // Optional: Show an error message to the user
+        alert('An error occurred while submitting the form data.');
+      });
+
+    // Note: The actual URL used in axios.post('/api/feedback', formData)
+    // should match the URL on your Express server where you are handling form submissions.
+    // For example, if your Express server is running on localhost:5000,
+    // you should use axios.post('http://localhost:5000/api/feedback', formData).
+    // Replace 'http://localhost:5000' with the correct URL where your Express server is running.
+    // You can also clear the form after successful submission by using:
+     setFormData(initialState);
   };
   return (
     <div>
@@ -40,10 +54,10 @@ export const Contact = (props) => {
               <div className="section-title">
                 <h2>Feedback</h2>
                 <p>
-                Nous vous invitons cordialement à laisser votre feedback sur notre site web. Votre opinion est précieuse pour nous !
+                  Veuillez partager votre feedback sur l'endroit visité virtuellement. Votre opinion est précieuse pour nous !
                 </p>
               </div>
-              <form name="sentMessage" validate onSubmit={handleSubmit}>
+              <form name="sentMessage" onSubmit={handleSubmit}  method="POST" encType="application/json" action="http://localhost:3000/api/feedback">
                 <div className="row">
                   <div className="col-md-6">
                     <div className="form-group">
@@ -54,6 +68,7 @@ export const Contact = (props) => {
                         className="form-control"
                         placeholder="Nom"
                         required
+                        value={formData.name}
                         onChange={handleChange}
                       />
                       <p className="help-block text-danger"></p>
@@ -61,33 +76,48 @@ export const Contact = (props) => {
                   </div>
                   <div className="col-md-6">
                     <div className="form-group">
+                      <label htmlFor="score">Degré d'appréciation de l'endroit :</label>
                       <input
-                        type="email"
-                        id="email"
-                        name="email"
+                        type="range"
+                        list="tickmarks"
+                        id="score"
+                        name="appreciation"
                         className="form-control"
-                        placeholder="Email"
-                        required
+                        value={formData.appreciation}
                         onChange={handleChange}
                       />
+                      <datalist id="tickmarks">
+                        <option value="0" label="0%"></option>
+                        <option value="10"></option>
+                        <option value="20"></option>
+                        <option value="30"></option>
+                        <option value="40"></option>
+                        <option value="50" label="50%"></option>
+                        <option value="60"></option>
+                        <option value="70"></option>
+                        <option value="80"></option>
+                        <option value="90"></option>
+                        <option value="100" label="100%"></option>
+                      </datalist>
                       <p className="help-block text-danger"></p>
                     </div>
                   </div>
                 </div>
                 <div className="form-group">
                   <textarea
-                    name="message"
-                    id="message"
+                    name="commentaire"
+                    id="commentaire"
                     className="form-control"
                     rows="4"
-                    placeholder="Message"
+                    placeholder="Commentaire"
                     required
+                    value={formData.commentaire}
                     onChange={handleChange}
                   ></textarea>
                   <p className="help-block text-danger"></p>
                 </div>
                 <div id="success"></div>
-                <button type="submit" className="btn btn-custom btn-lg">
+                <button type="submit" className="btn btn-custom btn-lg" id="buttonSubmit">
                   Envoyer Message
                 </button>
               </form>
