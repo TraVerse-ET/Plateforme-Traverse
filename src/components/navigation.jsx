@@ -1,7 +1,14 @@
 import React from "react";
-import logo from "./Logo-e.png";
+import UserService from "../helpers/userService";
 
-export const Navigation = (props) => {
+export const Navigation = () => {
+  
+  const handleLogin = () => {
+    UserService.login();
+  }
+  const handleLogout = () => {
+    UserService.logout();
+  }
   return (
     <nav id="menu" className="navbar navbar-default navbar-fixed-top">
       <div className="container">
@@ -20,7 +27,7 @@ export const Navigation = (props) => {
           </button>
           <a className="navbar-brand page-scroll" href="#page-top">
             ExploTech 
-            <img className="navbar-brand page-scroll" src={logo} alt="ExploTech Logo" style={{ width: '100px', height: '100px' ,marginTop:'-39px'}}></img>
+            <img className="navbar-brand page-scroll" src="/img/Logo-e.png" alt="ExploTech Logo" style={{ width: '100px', height: '100px' ,marginTop:'-39px'}}></img>
           </a>{" "}
         </div>
 
@@ -29,21 +36,17 @@ export const Navigation = (props) => {
           id="bs-example-navbar-collapse-1"
         >
           <ul className="nav navbar-nav navbar-right">
-            <li>
-              <a href="#features" className="page-scroll">
-                Objectifs
+          <li>
+            <a href="#login" className="page-scroll">
+            { !UserService.isLoggedIn() ? (<button type="button" onClick={handleLogin} className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2">CONNEXION</button>
+            ): (<button type="button" onClick={handleLogout} className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2">DECONNEXION</button>
+            )}
+            
               </a>
+              
             </li>
-            <li>
-              <a href="#about" className="page-scroll">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#services" className="page-scroll">
-                Fonctionnalites
-              </a>
-            </li>
+          
+      
             <li>
               <a href="#portfolio" className="page-scroll">
                 Gallery

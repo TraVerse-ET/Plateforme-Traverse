@@ -1,0 +1,22 @@
+.custom-popup {
+  width: 50vw;
+  height: auto;
+  max-height: 110vh;
+  left: 50%;
+  top: 50%;
+  background-color: rgba(80, 78, 78, 0.485) !important;
+}
+/* .child{
+    position: relative;
+} */
+/* 
+.close-button {
+    position : absolute;
+  top: 220px;
+  right: 450px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+} */
