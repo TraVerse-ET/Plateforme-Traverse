@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
-import UserService from "../helpers/userService";
+import useToken from "../hooks/useToken";
 import "../styles/unityProject.css"
+import Login from "./login";
+import Popup from "./modals/Modal";
 
 
-export const Testimonials = (props) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(UserService.isLoggedIn());
+export const Testimonials = () => {
+  const {token, setToken} = useToken();
+const [openPopup, setOpenPopup] = useState(false);
+  const handlePopup = () => setOpenPopup(!openPopup);
 
   const { unityProvider } = useUnityContext({
     loaderUrl: "./traverse_koutoubia/Build/WebGL.loader.js",
@@ -15,18 +19,18 @@ export const Testimonials = (props) => {
   });
 
   const handleLogin = () => {
-    UserService.login();
-    console.log("user: ", UserService.getUser());
-    setIsLoggedIn(true);
+    handlePopup()
+      console.log("user calling login")
   }
 
   return (
+    <>
     <div id="testimonials">
       <div className="container">
         <div className="section-title text-center">
           <h2>Demo de notre visite KOUTOUBIA</h2>
-          {!isLoggedIn &&(<p> Vous devez être connectez pour voir la visite </p>)}
-                 {!isLoggedIn &&(<button onClick={handleLogin} className="" type="button" >se connecter</button>)}   
+          {!token &&(<p> Vous devez être connectez pour voir la visite </p>)}
+                 {!token &&(<button onClick={handleLogin} className="" type="button" >se connecter</button>)}   
 
         </div>
 
@@ -35,8 +39,7 @@ export const Testimonials = (props) => {
           <div
             className="w-full h-full"
             style={{
-              filter: isLoggedIn ? 'none' : 'blur(5px)',
-            }}
+            filter: token !== null && token !== undefined && token !== 0 ? 'none' : 'blur(5px)',            }}
           >
              <Unity unityProvider={unityProvider}
               style={{
@@ -52,5 +55,9 @@ export const Testimonials = (props) => {
         </div>
       </div>
     </div>
+      {openPopup && <Popup onClose={handlePopup}>
+    <Login onClose={handlePopup}/>
+    </Popup>}
+    </>
   );
 };
