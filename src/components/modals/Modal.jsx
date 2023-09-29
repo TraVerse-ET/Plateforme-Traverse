@@ -1,8 +1,8 @@
 import React from 'react';
 import "../../styles/Popup.css"
-
+import ReactDOM from "react-dom";
 const Popup = ({ children, onClose }) => {
-  return (
+  return ReactDOM.createPortal(
 
     <div className="fixed inset-0 flex items-center justify-center z-50 mt-12 ">
       <div className="custom-popup bg-white rounded-xl shadow-lg p-3 ">
@@ -20,8 +20,7 @@ const Popup = ({ children, onClose }) => {
         </div>
      
       </div>
-    </div>
-
+    </div>,document.getElementById("popup-root") // L'élément cible en dehors de la hiérarchie parente
   );
 };
 
