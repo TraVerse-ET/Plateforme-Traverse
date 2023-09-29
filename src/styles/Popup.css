@@ -1,11 +1,17 @@
 .custom-popup {
-  width: 60vw;
-  height: 60vh;
-  max-height: 110vh;
+  width: 90vh;
+  height: auto;
+  max-height: 90vh;
   left: 50%;
   top: 50%;
-  background-color: rgb(27, 26, 26) !important;
+  background-color: rgba(29, 28, 28, 0.485) !important;
+  border: none;
+
 }
+input {
+  z-index: 1;
+}
+
 /* .child{
     position: relative;
 } */

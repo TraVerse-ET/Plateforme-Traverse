@@ -20,15 +20,14 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
 const App = () => {
 
   const [landingPageData, setLandingPageData] = useState({});
-  const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
     setLandingPageData(JsonData);
   }, []);
 
   return (
-    <div>
-      <Navigation setIsLogged={setIsLogged} />
+    <>
+      <Navigation />
       <Header data={landingPageData.Header} />
       <Features data={landingPageData.Features} />
       <About data={landingPageData.About} />
@@ -37,7 +36,7 @@ const App = () => {
       <Testimonials/>
       <Team data={landingPageData.Team} />
       <Contact data={landingPageData.Contact} />
-    </div>
+    </>
   );
 };
 
