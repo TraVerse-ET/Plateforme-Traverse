@@ -1,23 +1,44 @@
 import React, { useState } from "react";
 import loginUser from "../api/loginUser";
 import { getUsers } from "../data/allUsers";
-import useToken from "../hooks/useToken";
+import axios from "axios"; // Import Axios for making HTTP requests
+
 import {
   CountryDropdown,
   RegionDropdown,
   CountryRegionData,
 } from "react-country-region-selector";
 import { toast } from "react-toastify";
+import { useTokenContext } from "../contexts/TokenContext";
 
 function Login({ onClose }) {
-  const users = getUsers();
-  const { token, setToken } = useToken();
+  const [users, setUsers] = useState([]);
+  const { token, setToken } = useTokenContext();
+
+  axios
+    .get("http://localhost:3000/api/users")
+    .then((response) => {
+      setUsers(response.data);
+      console.log(response.data);
+      // Utilisez les données des utilisateurs ici
+    })
+    .catch((error) => {
+      console.error("Erreur lors de la récupération des utilisateurs :", error);
+    });
 
   /** gestion du state formulaire */
-
+  const initialState = {
+    email: "",
+    fullName: "",
+    password: "",
+    selectedCountry: "",
+    region: "",
+    gender: "",
+  };
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
   const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState(initialState);
 
   const [selectedCountry, setSelectedCountry] = useState("");
   const [region, setRegion] = useState("");
@@ -30,10 +51,12 @@ function Login({ onClose }) {
   const handleLogin = async (e) => {
     e.preventDefault();
     console.log("calling login .......");
+    console.log("*******" + users);
+
     const user = users.find(
       (user) => user.email === email && user.password === password
     );
-    console.log("user login : ");
+    console.log("user login : ", user);
     if (user) {
       const myToken = await loginUser({
         email,
@@ -49,12 +72,49 @@ function Login({ onClose }) {
     }
   };
 
-  const handleRegistration = (e) => {
+  const handleRegistration = (event) => {
+    event.preventDefault();
+    formData.email = email;
+    formData.fullName = fullName;
+    formData.gender = gender;
+    formData.password = password;
+    formData.region = region;
+    formData.selectedCountry = selectedCountry;
+    // const jsonData = JSON.stringify(formData);
+
+    const axiosConfig = {
+      method: "post", // Méthode HTTP (POST)
+      url: "http://localhost:3000/api/Register", // URL de l'action
+      data: formData, // Données à envoyer (formData)
+      headers: {
+        "Content-Type": "application/json", // En-tête de contenu
+      },
+    };
+
+    axios
+      .request(axiosConfig)
+      .then((response) => {
+        console.log("la reponse est : ", response.data);
+        toast.success("Form data submitted successfully!");
+      })
+      .catch((error) => {
+        console.log("la reponse est : ", formData);
+
+        console.error(error);
+        alert("An error occurred while submitting the form data.");
+      });
+
+    onClose();
+    setFormData(initialState);
+  };
+
+  const handleSubmitForRegister = (e) => {
     e.preventDefault();
 
     console.log("calling registration ....");
     handleChoice();
   };
+
   const handleCountryChange = (country) => {
     console.log("country: ", country);
     setSelectedCountry(country);
@@ -153,6 +213,7 @@ function Login({ onClose }) {
               <button
                 type="submit"
                 className="border-2 border-gray-100 focus:outline-none bg-purple-600 text-white font-bold tracking-wider block w-full p-2 rounded-lg focus:border-gray-700 hover:bg-purple-700"
+                // onSubmit={handleSubmitForRegister}
               >
                 Submit
               </button>

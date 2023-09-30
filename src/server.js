@@ -26,6 +26,18 @@ const feedbackSchema = new mongoose.Schema({
   appreciation: Number,
   commentaire: String,
 });
+const RegisterSchema = new mongoose.Schema({
+  email: String,
+  fullName: String,
+  selectedCountry: String,
+  gender: String,
+  password: String,
+  selectedCountry: String,
+});
+const userSchema = new mongoose.Schema({
+  email: String,
+  password: String,
+});
 
 // Create a MongoDB model based on the schema
 const Feedback = mongoose.model("Feedback", feedbackSchema);
@@ -44,8 +56,41 @@ app.post("/api/feedback", async (req, res) => {
   }
 });
 
+const Register = mongoose.model("Register", RegisterSchema);
+// Define the route to handle form submissions
+app.post("/api/Register", async (req, res) => {
+  try {
+    const formData = req.body;
+    console.log(formData);
+    const register = new Register(formData);
+    await register.save();
+    return res.json({ message: "register data saved successfully" });
+  } catch (error) {
+    console.error(error);
+    return res
+      .status(500)
+      .json({ error: "Error saving register data to database" });
+  }
+});
+const User = mongoose.model("User", userSchema);
+
+// Route pour récupérer les utilisateurs
+app.get("/api/users", async (req, res) => {
+  try {
+    // Récupérez tous les utilisateurs de la collection "register"
+    const users = await Register.find({}, "email password").lean();
+    console.log("usersapi ", users);
+
+    // Renvoyez les utilisateurs en réponse
+    return res.json(users);
+  } catch (error) {
+    console.error("Erreur lors de la récupération des utilisateurs :", error);
+    return res.status(500).json({ message: "Erreur serveur" });
+  }
+});
+
 // Start the server
-const port = 3004;
+const port = 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
