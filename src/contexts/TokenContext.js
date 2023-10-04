@@ -1,9 +1,20 @@
-import React, { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const TokenContext = createContext();
 
+export function useTokenContext() {
+  return useContext(TokenContext);
+}
+
+// Créez une fonction pour récupérer le token depuis le stockage de session
+const getToken = () => {
+  const tokenString = sessionStorage.getItem("token");
+  const userToken = JSON.parse(tokenString);
+  return userToken?.token;
+};
+
 export function TokenProvider({ children }) {
-  const [token, setToken] = useState();
+  const [token, setToken] = useState(getToken());
 
   const saveToken = (userToken) => {
     sessionStorage.setItem("token", JSON.stringify(userToken));
@@ -15,12 +26,4 @@ export function TokenProvider({ children }) {
       {children}
     </TokenContext.Provider>
   );
-}
-
-export function useToken() {
-  const context = useContext(TokenContext);
-  if (!context) {
-    throw new Error("useToken must be used within a TokenProvider");
-  }
-  return context;
 }

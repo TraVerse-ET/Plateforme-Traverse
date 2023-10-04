@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
-import useToken from "../hooks/useToken";
+import { useTokenContext } from "../contexts/TokenContext";
 import "../styles/unityProject.css";
 import Login from "./login";
 import Popup from "./modals/Modal";
 
 export const Testimonials = () => {
-  const { token, setToken } = useToken();
+  const { token, setToken } = useTokenContext();
   const [openPopup, setOpenPopup] = useState(false);
   const handlePopup = () => setOpenPopup(!openPopup);
 

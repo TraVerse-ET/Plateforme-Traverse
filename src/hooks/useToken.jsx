@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function useToken() {
+export default function useTokenContext() {
   const getToken = () => {
     const tokenString = sessionStorage.getItem("token");
     const userToken = JSON.parse(tokenString);

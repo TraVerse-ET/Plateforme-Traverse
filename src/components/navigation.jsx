@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import useToken from "../hooks/useToken";
+import { useTokenContext } from "../contexts/TokenContext";
 import Login from "./login";
 import Popup from "./modals/Modal";
 
 export const Navigation = () => {
   
-  const {token, setToken} = useToken();
+  const {token, setToken} = useTokenContext();
   const [openPopup, setOpenPopup] = useState(false);
   const handlePopup = () => setOpenPopup(!openPopup);
 
@@ -15,6 +14,7 @@ export const Navigation = () => {
     console.log("calling for login ");
   }
   const handleLogout = () => {
+     sessionStorage.removeItem("token");
     setToken(null);
     console.log("deconnected !! !")
   }
