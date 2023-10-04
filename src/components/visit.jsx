@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTokenContext } from "../contexts/TokenContext";
 import useToken from "../hooks/useToken";
-import "../styles/unityProject.css";
 import Login from "./login";
 import Popup from "./modals/Modal";
 
 export const Visit = () => {
-  const { token, setToken } = useToken();
+  const { token, setToken } = useTokenContext();
   const [openPopup, setOpenPopup] = useState(false);
   const handlePopup = () => setOpenPopup(!openPopup);
   const navigate = useNavigate();
