@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useTokenContext } from "../contexts/TokenContext";
 import Login from "./login";
 import Popup from "./modals/Modal";
@@ -64,9 +65,17 @@ export const Navigation = () => {
               </a>
             </li>
             <li>
-              <a href="#testimonials" className="page-scroll">
-                Virtual Visit
+              {token && (<>
+                 <Link className="page-scroll" to={"/vr-visit"}>
+                  Virtual Visit
+              </Link>
+              </>)}
+             
+              {!token &&(<>
+                <a href="#visits" className="page-scroll">
+                  Virtual Visit
               </a>
+              </>)}
             </li>
             <li>
               <a href="#team" className="page-scroll">
