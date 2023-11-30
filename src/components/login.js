@@ -60,23 +60,28 @@ function Login({ onClose }) {
     e.preventDefault();
     console.log("calling login .......");
     console.log("*******" + users);
-
-    const user = users.find(
-      (user) => user.email === email && user.password === password
-    );
-    console.log("user login : ", user);
-    if (user) {
-      const myToken = await loginUser({
-        email,
-        password,
-      });
-      setToken(myToken);
-      console.log("is logged : ", token);
-      toast.success("successufully logged");
-      onClose();
+    if (email.length < 5 || password.length < 4) {
+      toast.warning("Email or Password is required !");
     } else {
-      toast.warning("Identifiants invalides. ");
-      console.log("not working : ");
+      axios
+        .post("http://localhost:3000/api/login", {
+          email: email,
+          password: password,
+        })
+        .then((response) => {
+          setToken(response.data.token);
+          console.log("token user: ", response.data.token);
+          console.log("token is setted : ", token);
+          toast.success("successufully logged");
+          onClose();
+        })
+        .catch((error) => {
+          toast.warning("Identifiants invalides. ");
+          console.error(
+            "Erreur lors de la récupération des utilisateurs :",
+            error
+          );
+        });
     }
   };
 
@@ -117,9 +122,10 @@ function Login({ onClose }) {
           alert("An error occurred while submitting the form data.");
         });
 
-      onClose();
+      //onClose();
       setFormData(initialState);
       setDataError(initialState);
+      handleChoice();
     }
   };
 

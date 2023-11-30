@@ -10,15 +10,17 @@ export function useTokenContext() {
 const getToken = () => {
   const tokenString = sessionStorage.getItem("token");
   const userToken = JSON.parse(tokenString);
-  return userToken?.token;
+  console.log("susqm Token : ", userToken);
+  return userToken;
 };
 
 export function TokenProvider({ children }) {
   const [token, setToken] = useState(getToken());
 
   const saveToken = (userToken) => {
+    console.log("tokentostore : ", userToken);
     sessionStorage.setItem("token", JSON.stringify(userToken));
-    setToken(userToken.token);
+    setToken(userToken);
   };
 
   return (

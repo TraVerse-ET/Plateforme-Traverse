@@ -22,7 +22,7 @@ mongoose.connect(
 
 // Create a MongoDB schema
 const feedbackSchema = new mongoose.Schema({
-  name: String,
+  idUser: String,
   appreciation: Number,
   commentaire: String,
 });
@@ -63,8 +63,8 @@ app.post("/api/Register", async (req, res) => {
     const formData = req.body;
     console.log(formData);
     const register = new Register(formData);
-    await register.save();
-    return res.json({ message: "register data saved successfully" });
+    const user = await register.save();
+    return res.status(200).json(user);
   } catch (error) {
     console.error(error);
     return res
@@ -75,14 +75,24 @@ app.post("/api/Register", async (req, res) => {
 const User = mongoose.model("User", userSchema);
 
 // Route pour récupérer les utilisateurs
-app.get("/api/users", async (req, res) => {
+app.post("/api/login", async (req, res) => {
   try {
     // Récupérez tous les utilisateurs de la collection "register"
-    const users = await Register.find({}, "email password").lean();
-    console.log("usersapi ", users);
-
-    // Renvoyez les utilisateurs en réponse
-    return res.json(users);
+    console.log("request body email : ", req.body.email);
+    const user = await Register.findOne({ email: req.body.email });
+    if (user) {
+      if (user.password === req.body.password) {
+        return res.status(200).send({
+          token: user._id,
+        });
+      } else {
+        return res.status(401).send({ message: "Mot de passe incorrect" });
+      }
+    } else {
+      return res
+        .status(404)
+        .send({ message: "Aucun utilisateur trouvé pour cet e-mail" });
+    }
   } catch (error) {
     console.error("Erreur lors de la récupération des utilisateurs :", error);
     return res.status(500).json({ message: "Erreur serveur" });
