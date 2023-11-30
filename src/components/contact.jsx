@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Import Axios for making HTTP requests
+import { useTokenContext } from '../contexts/TokenContext';
 // ... Rest of the code remains the same
 
 const initialState = {
-  name: '',
+  idUser: '',
   appreciation: 0,
   commentaire: ''
 };
 
 export const Contact = (props) => {
   const [formData, setFormData] = useState(initialState);
+
+  const {token, setToken} = useTokenContext();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -23,7 +26,8 @@ export const Contact = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
    // const jsonData = JSON.stringify(formData);
-
+   console.log("tokenTo *envoyer : ", token)
+    formData.idUser= token;
     // Make a POST request to your Express server
     axios.post('http://localhost:3000/api/feedback', formData)
       .then((response) => {
@@ -59,21 +63,6 @@ export const Contact = (props) => {
               </div>
               <form name="sentMessage" onSubmit={handleSubmit}  method="POST" encType="application/json" action="http://localhost:3000/api/feedback">
                 <div className="row">
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        className="form-control"
-                        placeholder="Nom"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                      />
-                      <p className="help-block text-danger"></p>
-                    </div>
-                  </div>
                   <div className="col-md-6">
                     <div className="form-group">
                       <label htmlFor="score">Degré d'appréciation de l'endroit :</label>
