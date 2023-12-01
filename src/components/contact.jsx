@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/StarRating.css';
 import axios from 'axios'; // Import Axios for making HTTP requests
 // ... Rest of the code remains the same
 
@@ -10,6 +11,11 @@ const initialState = {
 
 export const Contact = (props) => {
   const [formData, setFormData] = useState(initialState);
+  const [rating, setRating] = useState(1);
+
+  const handleStarClick = (value) => {
+    setRating(value);
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -24,8 +30,11 @@ export const Contact = (props) => {
     event.preventDefault();
    // const jsonData = JSON.stringify(formData);
 
+   // Mettez à jour formData avec la valeur de l'appréciation (rating)
+  const updatedFormData = { ...formData, appreciation: rating };
+
     // Make a POST request to your Express server
-    axios.post('http://localhost:3000/api/feedback', formData)
+    axios.post('http://localhost:3000/api/feedback', updatedFormData)
       .then((response) => {
         console.log("la reponse est : ",response.data); // Response from the server (optional)
         // Optional: Show a success message to the user
@@ -44,6 +53,7 @@ export const Contact = (props) => {
     // Replace 'http://localhost:5000' with the correct URL where your Express server is running.
     // You can also clear the form after successful submission by using:
      setFormData(initialState);
+     setRating(1);
   };
   return (
     <div>
@@ -51,54 +61,27 @@ export const Contact = (props) => {
         <div className="container">
           <div className="col-md-8">
             <div className="row">
-              <div className="section-title">
+              <div>
                 <h2>Feedback</h2>
                 <p>
-                  Veuillez partager votre feedback sur l'endroit visité virtuellement. Votre opinion est précieuse pour nous !
+                  Veuillez partager votre feedback sur l'endroit visité virtuellement. <br />Votre opinion est précieuse pour nous !
                 </p>
               </div>
               <form name="sentMessage" onSubmit={handleSubmit}  method="POST" encType="application/json" action="http://localhost:3000/api/feedback">
                 <div className="row">
                   <div className="col-md-6">
                     <div className="form-group">
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        className="form-control"
-                        placeholder="Nom"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                      />
-                      <p className="help-block text-danger"></p>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label htmlFor="score">Degré d'appréciation de l'endroit :</label>
-                      <input
-                        type="range"
-                        list="tickmarks"
-                        id="score"
-                        name="appreciation"
-                        className="form-control"
-                        value={formData.appreciation}
-                        onChange={handleChange}
-                      />
-                      <datalist id="tickmarks">
-                        <option value="0" label="0%"></option>
-                        <option value="10">10%</option>
-                        <option value="20"></option>
-                        <option value="30">30%</option>
-                        <option value="40">40%</option>
-                        <option value="50" label="50%"></option>
-                        <option value="60">60%</option>
-                        <option value="70">70%</option>
-                        <option value="80"></option>
-                        <option value="90">90%</option>
-                        <option value="100" label="100%">100%</option>
-                      </datalist>
+                      <p >Degré d'appréciation de l'endroit :</p>
+                      <div className="score" data-rating={rating}>
+                        {[1, 2, 3, 4, 5].map((value) => (
+                          <span
+                            key={value}
+                            className={`star ${value <= rating ? 'filled' : ''}`}
+                            data-value={value}
+                            onClick={() => handleStarClick(value)}
+                          ></span>
+                        ))}
+                      </div>
                       <p className="help-block text-danger"></p>
                     </div>
                   </div>
