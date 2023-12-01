@@ -4,11 +4,13 @@ import { useTokenContext } from "../contexts/TokenContext";
 import "../styles/unityProject.css";
 import Login from "./login";
 import Popup from "./modals/Modal";
+import { useEffect } from "react";
 
 export const Testimonials = () => {
   const { token, setToken } = useTokenContext();
   const [openPopup, setOpenPopup] = useState(false);
   const handlePopup = () => setOpenPopup(!openPopup);
+    const [unityKey, setUnityKey] = useState(0); // Ajoutez une clé pour réinitialiser le composant Unity
 
   const { unityProvider } = useUnityContext({
     loaderUrl: "./traverse_koutoubia/Build/WebGL.loader.js",
@@ -16,6 +18,9 @@ export const Testimonials = () => {
     frameworkUrl: "./traverse_koutoubia/Build/build.framework.js",
     codeUrl: "./traverse_koutoubia/Build/build.wasm",
   });
+    useEffect(() => {
+    setUnityKey((prevKey) => prevKey + 1);
+  }, [unityProvider]);
 
   const handleLogin = () => {
     handlePopup();
@@ -44,6 +49,7 @@ export const Testimonials = () => {
               }}
             >
               <Unity
+                key={unityKey}
                 unityProvider={unityProvider}
                 className="w-full h-full border-10 border-gray-200 rounded-lg shadow-md"
               />

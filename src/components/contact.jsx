@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import '../styles/StarRating.css';
 import axios from 'axios'; // Import Axios for making HTTP requests
+import { useTokenContext } from '../contexts/TokenContext';
 // ... Rest of the code remains the same
 
 const initialState = {
-  name: '',
+  idUser: '',
   appreciation: 0,
   commentaire: ''
 };
@@ -16,6 +17,8 @@ export const Contact = (props) => {
   const handleStarClick = (value) => {
     setRating(value);
   };
+
+  const {token, setToken} = useTokenContext();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -29,6 +32,9 @@ export const Contact = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
    // const jsonData = JSON.stringify(formData);
+
+    console.log("tokenTo *envoyer : ", token)
+    formData.idUser= token;
 
    // Mettez à jour formData avec la valeur de l'appréciation (rating)
   const updatedFormData = { ...formData, appreciation: rating };
