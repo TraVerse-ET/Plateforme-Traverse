@@ -1,0 +1,23 @@
+.starRating {
+    text-align: center;
+  }
+  
+  .stars {
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .star {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: url('../../public/img/rating/star.png'); /* Remplacez par votre icône d'étoile */
+    background-size: cover;
+    margin: 0 2px;
+  }
+  
+  .filled {
+    background: url('../../public/img/rating/filled-star.png'); /* Remplacez par votre icône d'étoile remplie */
+    background-size: cover;
+  }
+  
