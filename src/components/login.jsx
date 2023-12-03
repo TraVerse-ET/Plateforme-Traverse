@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import loginUser from "../api/loginUser";
-import { getUsers } from "../data/allUsers";
 import axios from "axios"; // Import Axios for making HTTP requests
 
 import {
@@ -10,7 +8,7 @@ import {
 } from "react-country-region-selector";
 import { toast } from "react-toastify";
 import { useTokenContext } from "../contexts/TokenContext";
-import { validateFields } from "./utils/validForm";
+import { validateFields } from "./validator/validForm";
 
 function Login({ onClose }) {
   const [users, setUsers] = useState([]);

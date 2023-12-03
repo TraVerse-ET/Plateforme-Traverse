@@ -11,6 +11,7 @@ import { Contact } from "./contact";
 import SmoothScroll from "smooth-scroll";
 import "../App.css";
 import { Visit } from "./visit";
+import Footer from "./footer";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
@@ -25,6 +26,16 @@ const Home = () => {
     setLandingPageData(JsonData);
   }, []);
 
+  useEffect(() => {
+  const href = window.location.href.substring(
+    window.location.href.lastIndexOf('#') + 1
+  );
+  const element = document.getElementById(href);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+}, []);
+
   return (
     <>
       <Navigation />
@@ -36,6 +47,7 @@ const Home = () => {
       <Visit />
       <Team data={landingPageData.Team} />
       <Contact data={landingPageData.Contact} />
+      <Footer />
     </>
   );
 };

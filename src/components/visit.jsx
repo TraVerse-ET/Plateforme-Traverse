@@ -46,6 +46,7 @@ export const Visit = () => {
     controls
     width="480"
     height="270" // Spécifiez la hauteur souhaitée en pixels
+    muted
             >
                 <source src="/video/Musium.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
