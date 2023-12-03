@@ -5,9 +5,9 @@ export const Services = (props) => {
     <div id="services" className="text-center">
       <div className="container">
         <div className="section-title">
-          <h2>Nos fonctionnalités</h2>
+          <h2>Our features</h2>
           <p>
-           Voici la liste des fonctionnalités que notre visite virtuelle propose
+            Here is the list of features that our virtual tour offers
           </p>
         </div>
         <div className="row">

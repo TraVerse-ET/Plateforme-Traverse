@@ -1,7 +1,0 @@
-{
-    "realm":"Traverse",
-    "resource":"traverse-web-auth",
-    "auth-server-url":"http://localhost:8080",
-    "bearerOnly": true,
-    "public-client" : true
-}

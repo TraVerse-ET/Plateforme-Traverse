@@ -8,7 +8,6 @@
     "axios": "^1.5.0",
     "cors": "^2.8.5",
     "emailjs-com": "^2.6.4",
-    "keycloak-js": "^22.0.1",
     "mongoose": "^7.5.0",
     "react": "^17.0.1",
     "react-country-region-selector": "^3.6.1",

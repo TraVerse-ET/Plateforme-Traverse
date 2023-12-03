@@ -1,24 +1,24 @@
 {
   "Header": {
     "title": "Traverse",
-    "paragraph": "Une plateforme de tourisme virtuelle est une plateforme en ligne qui permet aux utilisateurs d'explorer virtuellement des destinations touristiques de la ville de MARRAKECH."
+    "paragraph": "A virtual tourism platform is an online platform that allows users to virtually explore tourist destinations in the city of MARRAKECH."
   },
   "About": {
-    "paragraph": "Nous sommes une équipe de quatres personnes et aussi des étudiants de la filière d' Ingénierie en Réseaux et Systèmes d'Information à la faculté des sciences et techniques de Marrakech. Dans le cadre d'un module, intitulé` Conduite de projet ` de la formation IRISI, on a créé une entreprise de similation ExploTech afin de réaliser un projet TraVerse, sur ceux, nous avons opté d'y inclure le jardin dans ce projet.."
+    "paragraph": "We are a team of four people and also students in the Network and Information Systems Engineering sector at the Faculty of Science and Technology of Marrakech. As part of a module, entitled 'Project Management' of the IRISI training, we created a similation company ExploTech in order to carry out a TraVerse project, of which we opted to include the garden in this project."
   },
   "Gallery": [
     {
-      "title": "Musée DAR SI SAID",
+      "title": "DAR SI SAID Museum",
       "largeImage": "img/portfolio/11_large.jpeg",
       "smallImage": "img/portfolio/11_small.jpeg"
     },
     {
-      "title": "Musée DAR SI SAID",
+      "title": "DAR SI SAID Museum",
       "largeImage": "img/portfolio/02-large.jpg",
       "smallImage": "img/portfolio/02-small.jpg"
     },
     {
-      "title": "Musée DAR SI SAID",
+      "title": "DAR SI SAID Museum",
       "largeImage": "img/portfolio/03-large.jpg",
       "smallImage": "img/portfolio/03-small.jpg"
     }
@@ -26,18 +26,18 @@
   "Services": [
     {
       "icon": "fa fa-laptop",
-      "name": "Réalité virtuelle",
-      "text": "Notre plateforme propose une visualisation à 360 degrés et une navigation virtuelle, offrant ainsi une expérience immersive et réaliste.."
+      "name": "Virtual reality",
+      "text": "Our platform features 360-degree viewing and virtual navigation, providing an immersive and realistic experience."
     },
     {
       "icon": "fa fa-cubes",
-      "name": "Des objets 3D",
-      "text": "Notre projet offre une expérience interactive et pertinente en permettant la visualisation d'objets en 3D accompagnés d'informations écrites et audio.."
+      "name": "3D objects",
+      "text": "Our project offers an interactive and relevant experience by allowing the visualization of 3D objects accompanied by written and audio information."
     },
     {
       "icon": "fa fa-bank",
-      "name": "Autres fonctionnalités",
-      "text": "Mettre en place un quiz culturel pour acquérir des connaissances.Mettre en place un musee virtuel pour visualiser les objets 3D.."
+      "name": "Other features",
+      "text": "Set up a cultural quiz to acquire knowledge. Set up a virtual museum to visualize 3D objects."
     }
   ],
   "Testimonials": [
@@ -76,22 +76,22 @@
     {
       "img": "img/team/SOUMIA.jpg",
       "name": "OUAFI Soumia",
-      "job": "Chef de qualite de code"
+      "job": "Code Quality Manager"
     },
     {
       "img": "img/team/BARRY.jpeg",
       "name": "BARRY Boubacar",
-      "job": "Chef livrable"
+      "job": "Deliverables Manager"
     },
     {
       "img": "img/team/AMAL.jpeg",
       "name": "CHIHAB Amal",
-      "job": "Chef de projet"
+      "job": "Project Manager"
     },
     {
       "img": "img/team/NAJWA.jpeg",
       "name": "LEGHRIS Najwa",
-      "job": "Chef de communication"
+      "job": "Head of communications"
     }
   ],
   "Contact": {
@@ -105,23 +105,23 @@
   "Features": [
     {
       "icon": "fa fa-comments-o",
-      "title": "Intérêt touristique et culturel",
-      "text": "Préservation du patrimoine.Promotion du tourisme .Préparer un voyage.Comprendre le contexte historique culturel des lieux"
+      "title": "Tourist and cultural interest",
+      "text": "Preservation of heritage. Promotion of tourism. Prepare a trip. Understand the cultural historical context of the places"
     },
     {
       "icon": "fa fa-bullhorn",
-      "title": "Intérêt pour les architectes",
-      "text": "Les architectes peuvent d'étudier en détail les lieux sous tous leurs angles."
+      "title": "Interest for architects",
+      "text": "Architects can study places in detail from all angles."
     },
     {
       "icon": "fa fa-code",
-      "title": "Intérêt technologique",
-      "text": "Tirer parti des nouvelles technologies , telles que la réalité virtuelle et augmentéepour créer une expérience de visite encore plus immersive et interactive.."
+      "title": "Technological interest",
+      "text": "Take advantage of new technologies, such as virtual and augmented reality, to create an even more immersive and interactive visit experience."
     },
     {
       "icon": "fa fa-group",
-      "title": "Apprentissage interactif",
-      "text": "Notre plateforme offre une expérience interactive qui permett aux utilisateurs d'apprendre tout en s'amusant avec un quiz virtuel ."
+      "title": "Interactive learning",
+      "text": "Our platform offers an interactive experience that allows users to learn while having fun with a virtual quiz."
     }
   ]
 }
