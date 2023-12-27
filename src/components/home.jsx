@@ -27,13 +27,20 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-  const href = window.location.href.substring(
+  const anchor = window.location.href.substring(
     window.location.href.lastIndexOf('#') + 1
   );
-  const element = document.getElementById(href);
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
+
+  if (anchor === 'feedback') {
+    // Scroll to the element with id "feedback"
+    const feedbackElement = document.getElementById('feedback');
+    if (feedbackElement) {
+      setTimeout(() => {
+        scroll.animateScroll(feedbackElement, null, { offset: 50 });
+      }, 0);
+    }
   }
+  
 }, []);
 
   return (
@@ -46,7 +53,10 @@ const Home = () => {
       <Gallery data={landingPageData.Gallery} />
       <Visit />
       <Team data={landingPageData.Team} />
+      <div id="feedback">
       <Contact data={landingPageData.Contact} />
+
+      </div>
       <Footer />
     </>
   );

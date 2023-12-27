@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../styles/StarRating.css";
+import { toast } from "react-toastify";
+
 import axios from "axios"; // Import Axios for making HTTP requests
 import { useTokenContext } from "../contexts/TokenContext";
 // ... Rest of the code remains the same
@@ -44,7 +46,9 @@ export const Contact = (props) => {
       .then((response) => {
         console.log("la reponse est : ", response.data); // Response from the server (optional)
         // Optional: Show a success message to the user
-        alert("Form data submitted successfully!");
+        //alert("Form data submitted successfully!");
+        toast.success("Form data submitted successfully!");
+
       })
       .catch((error) => {
         console.error(error); // Handle any error that occurred during the request

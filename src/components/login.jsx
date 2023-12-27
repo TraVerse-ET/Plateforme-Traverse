@@ -261,15 +261,6 @@ function Login({ onClose }) {
             </div>
           </form>
 
-          {isLogin && (
-            <>
-              <div className="text-center">
-                <a href="#" className="hover:underline">
-                  Forgot password?
-                </a>
-              </div>
-            </>
-          )}
           <div className="text-center mt-12">
             <span>
               {isLogin

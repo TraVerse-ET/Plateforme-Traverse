@@ -8,11 +8,11 @@ const Navbar = ({handleClickBack}) => {
     }
         const handleRate = async () => {
            await handleClickBack();
-        navigate("/#contact");
+        navigate("/#feedback");
     }
     return(
         <>
-        <nav class="flex items-center mb-6 justify-between h-auto w-full flex-wrap bg-teal-500 p-6">
+        <nav class="flex items-center mb-6 justify-between h-auto w-full flex-wrap bg-blue-700 p-6">
             <div class="flex items-center flex-shrink-0 text-white mr-6">
                 <img src="img/Logo-e.png" className="w-16 h-16" />
                 <span class="font-semibold text-2xl tracking-tight">VR CATAGLOGUE</span>

@@ -11,6 +11,11 @@ const UnityProject = () => {
     isLoaded,
     requestFullscreen,
   } = useUnityContext({
+    // loaderUrl: "./traverse_SiSaid/Build/WebGL.Builds.loader.js",
+    // dataUrl: "./traverse_SiSaid/Build/webgl.data",
+    // frameworkUrl: "./traverse_SiSaid/Build/build.framework.js",
+    // codeUrl: "./traverse_SiSaid/Build/build.wasm",
+
     loaderUrl: "./traverse_koutoubia/Build/WebGL.loader.js",
     dataUrl: "./traverse_koutoubia/Build/webgl.data",
     frameworkUrl: "./traverse_koutoubia/Build/build.framework.js",
@@ -22,7 +27,7 @@ const UnityProject = () => {
 
   async function handleClick() {
     await unload();
-    navigate("/#contact");
+    navigate("/#feedback");
   }
 
   return (
